@@ -1,4 +1,4 @@
-﻿
+﻿@inject Blazored.LocalStorage.ILocalStorageService localStore
 @page "/"
 
 <font color="#d9d9d9"><h1 style="text-align:center">Local Notes</h1></font>
@@ -9,7 +9,8 @@
 <br />
 <div class="text-center">
 <textarea @bind="noteContent" />
-    
+    <button type="submit" @onclick="UpdateLocalStorage">Save</button>
+    <button type="submit" @onclick="ClearLocalStorage">Clear</button>
 </div>
 
 
@@ -18,7 +19,21 @@
     const string noteKey = "note";
     string noteContent;
 
-    
+    public async void UpdateLocalStorage()
+    {
+        await localStore.SetItemAsync(noteKey, noteContent);
+    }
+
+    public async void ClearLocalStorage()
+    {
+        noteContent = "";
+        await localStore.ClearAsync();
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        noteContent = await localStore.GetItemAsync<string>(noteKey);
+    }
 }
 
 <br>

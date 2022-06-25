@@ -1,16 +1,83 @@
-﻿@page "/counter"
+﻿@inject Blazored.LocalStorage.ILocalStorageService localStore
+@page "/Counter"
 
-<h1>Counter</h1>
 
-<p>Current count: @currentCount</p>
+<font color="#d9d9d9"><h2 style="text-align:center">Things To Do ATM (temporary):</h2></font>
 
-<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
-@code {
-    private int currentCount = 0;
 
-    private void IncrementCount()
+<font color="#d9d9d9"><h3 style="text-align:center">Todo (@todos.Count(todo => !todo.IsDone))</h3></font>
+
+
+<div class="text-center">
+    <a href="https://www.youtube.com/watch?v=tYzMYcUty6s">Motywacja</a>
+</div>
+
+<ul>
+
+    @foreach (var todo in todos)
     {
-        currentCount++;
+        <li>
+            <div class="text-center">
+                <input type="checkbox" @bind="todo.IsDone" align="center" />
+                <input @bind="todo.Title" />
+            </div>
+        </li>
     }
+
+</ul>
+
+<div class="text-center">
+    <input placeholder="Type What To Do" @bind="newTodo" />
+    <button @onclick="AddTodo">Add This</button>
+</div>
+
+@code{
+
+    private IList<ToDoItem> todos = new List<ToDoItem>();
+    public string newTodo;
+
+    private void AddTodo()
+    {
+        if (!string.IsNullOrWhiteSpace(newTodo))
+        {
+            todos.Add(new ToDoItem { Title = newTodo });
+            newTodo = string.Empty;
+
+        }
+
+    }
+
 }
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h4 style="text-align: right; color: #dedede">Adam Hintz nr.109281</h4>
+<h4 style="text-align: left; color: #dedede">WORK IN PROGRESS...</h4>
