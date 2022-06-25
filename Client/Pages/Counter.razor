@@ -1,16 +1,69 @@
-﻿@page "/counter"
+﻿@inject Blazored.LocalStorage.ILocalStorageService localStore
+@page "/"
 
-<h1>Counter</h1>
+<font color="#d9d9d9"><h1 style="text-align:center">Local Notes</h1></font>
 
-<p>Current count: @currentCount</p>
 
-<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
-@code {
-    private int currentCount = 0;
 
-    private void IncrementCount()
+<br />
+<div class="text-center">
+<textarea @bind="noteContent" />
+    <button type="submit" @onclick="UpdateLocalStorage">Save</button>
+    <button type="submit" @onclick="ClearLocalStorage">Clear</button>
+</div>
+
+
+
+@code{
+    const string noteKey = "note";
+    string noteContent;
+
+    public async void UpdateLocalStorage()
     {
-        currentCount++;
+        await localStore.SetItemAsync(noteKey, noteContent);
+    }
+
+    public async void ClearLocalStorage()
+    {
+        noteContent = "";
+        await localStore.ClearAsync();
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        noteContent = await localStore.GetItemAsync<string>(noteKey);
     }
 }
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h4 style="text-align: right; color: #dedede">Adam Hintz nr.109281</h4>
+<h4 style="text-align: left; color: #dedede">WORK IN PROGRESS...</h4>
