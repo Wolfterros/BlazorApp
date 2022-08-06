@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Client.Pages
+namespace BlazorTodoApp.Models
 {
-    public class ToDoItem
+    public class Todo
     {
 
 
         public string Title { get; set; }
-        public bool IsDone { get; set; }
+        public bool IsComplete { get; set; }
 
 
 

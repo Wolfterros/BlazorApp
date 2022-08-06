@@ -18,7 +18,7 @@ app {
     position: relative;
     display: flex;
     flex-direction: column;
-    background-image: linear-gradient(180deg, #bd2828 40%, #1f1f1f 80%);
+    background-image: linear-gradient(180deg, #333333 40%, #1f1f1f 80%);
 }
 
 .top-row {
