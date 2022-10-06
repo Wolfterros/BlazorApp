@@ -1,0 +1,69 @@
+﻿@page "/Calculator"
+
+<h3>Calculator</h3>
+
+
+
+<button @onclick="CalculateFIRST">CALCULATE</button>
+
+
+
+<input type="text" @bind="InitialValue1" />
+
+
+<div class="text-center">
+
+    <font color="#d9d9d9"><h1 style="text-align:center">(+20)   <font color="#9c0615"> @Message1</font></h1></font>
+    <font color="#d9d9d9"><h1 style="text-align:center">(+100)  <font color="#9c0615"> @Message2</font>  </h1></font>
+
+</div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+<h3>Calculator Allegro</h3>
+
+<button @onclick="CalculateSECOND">CALCULATE</button>
+<input type="text" @bind="InitialValue2" />
+
+<div class="text-center">
+
+    <font color="#d9d9d9"><h1 style="text-align:center">(+20)   <font color="#9c0615"> @Message3</font></h1></font>
+
+</div>
+    
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+
+    @code {
+        decimal? Message1 { get; set; }
+
+        decimal? Message2 { get; set; }
+
+        int? InitialValue1;
+
+        void CalculateFIRST()
+        {
+            Message1 = (InitialValue1 * (100 - 23) / 100) + 20;
+            Message2 = (InitialValue1 * (100 - 23) / 100) + 100;
+        }
+
+
+        /// ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+        decimal? Message3 { get; set; }
+
+        int? InitialValue2;
+
+        void CalculateSECOND()
+        {
+            Message3 = ((((InitialValue2 * (100 - 23) / 100) + 20) * (100 + 12) / 100) * (100 + 23) / 100) * (100 + 11) / 100;
+        }
+    }
